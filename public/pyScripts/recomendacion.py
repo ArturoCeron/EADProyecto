@@ -5,10 +5,11 @@ import os.path
 import sys, json
 pd.options.mode.chained_assignment = None
 
+ruta = "https://raw.githubusercontent.com/ArturoCeron/EADProyecto/main/public/dataset/canciones.csv"
 atributos = ["acousticness","danceability","energy","popularity", "tempo", "year"]
-canciones = pd.read_csv("https://raw.githubusercontent.com/ArturoCeron/EADProyecto/main/dataset/canciones.csv")
+canciones = pd.read_csv(ruta)
 canciones = canciones.drop_duplicates(subset=['artists','name'],keep='first')
-normal = pd.read_csv("https://raw.githubusercontent.com/ArturoCeron/EADProyecto/main/dataset/canciones.csv")
+normal = pd.read_csv(ruta)
 normal = canciones.drop_duplicates(subset=['artists','name'],keep='first')
 canciones["name"] = canciones["name"].str.lower()
 canciones["artists"] = canciones["artists"].str.lower()
