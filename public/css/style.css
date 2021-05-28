@@ -1,0 +1,40 @@
+body{
+    font-size: 24px;
+    line-height: 1.5;
+    background: #DD9868;
+}
+
+main{
+    min-height: 500px;
+    padding: 30px 0;
+}
+
+footer {
+    padding: 30px 0;
+    font-size: 14px;
+    color: #000;
+    background: #FFBD59;
+    text-align: center;
+}
+
+.fondo{
+    background-image: url(../imgs/fondo.png);
+    background-repeat: no-repeat;;
+    background-size: cover;
+    background-position: center center;
+    padding: 20px 0;
+    min-height: 300px;
+    position: relative;
+}
+
+.contenidoFondo {
+    position: absolute;
+    top: 30%;
+    text-align: center;
+    width: 100%;
+}
+
+header .navbar {
+        border-radius: 0;
+        margin: 0;
+}
