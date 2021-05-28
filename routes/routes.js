@@ -4,7 +4,7 @@ const path = require('path');
 const spawn = require('child_process').spawn;
 
 var myPythonScriptPath = 'public/pyScripts/recomendacion.py';
-let {PythonShell} = require('python-shell');
+let {PythonShell} = require('node_modules/python-shell/index.js');
 var pyshell = new PythonShell(myPythonScriptPath);
 
 //Creacion de objeto Router Express
