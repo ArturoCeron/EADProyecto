@@ -1,0 +1,5 @@
+[0m2021.06.15 06:42:41 INFO  Started: Metals version 0.10.4 in workspace 'C:\Users\Latitude_E6230\Documents\EAD\Recomendador' for client Visual Studio Code 1.57.0.[0m
+[0m2021.06.15 06:42:59 INFO  time: initialize in 19s[0m
+[0m2021.06.15 06:42:59 WARN  Build server is not auto-connectable.[0m
+[0m2021.06.15 06:42:59 WARN  no build tool detected in workspace 'C:\Users\Latitude_E6230\Documents\EAD\Recomendador'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+[0m2021.06.15 07:21:44 INFO  shutting down Metals[0m

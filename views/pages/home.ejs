@@ -1,75 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Recomendador</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sweetalert2.all.min.js"></script>
-  </head>
-  <body>
-    <div class="jumbotron text-center" style="background: #DD9868;">
-      <h1>Sistema Recomendador de Canciones</h1><br>
-      <h2>Instrucciones: </h2><br>
-      <h4>Para ejecutar el programa es necesario ingresar el nombre de la canción, del autor y la cantidad de canciones que desea obtener como resultado</h4>
-    </div>
+	<head>
+		<title>Recomendador</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script src="sweetalert2.all.min.js"></script>
+	</head>
+	<body>
+		<div class="jumbotron text-center" style="background: darkgray">
+			<h1>Sistema Recomendador de Canciones</h1>
+			<br />
+			<h2>Instrucciones:</h2>
+			<br />
+			<h4>
+				Para ejecutar el programa es necesario ingresar el nombre de la canción, del
+				autor y la cantidad de canciones que desea obtener como resultado
+			</h4>
+		</div>
 
-    <form action="/home" method="post">
-      <div class="form-group">
-        <label for="cancion">Ingrese el nombre de la canción:</label>
-        <input type="text" class="form-control" placeholder="Cancion" id="cancion" name="nombre">
-      </div>
-      <div class="form-group">
-          <label for="autor">Ingrese el nombre del autor:</label>
-          <input type="text" class="form-control" placeholder="Autor" id="autor" name="autor">
-      </div>
-      <div class="form-group">
-        <label for="cantidad">Cantidad de canciones:</label>
-        <input type="number" class="form-control" placeholder="Cantidad" id="cantidad" name="cantidad">
-      </div>
-      <button type="submit" class="btn btn-primary">Buscar</button>
-    </form>
+		<form action="/home" method="post">
+			<div class="form-group">
+				<label for="cancion">Ingrese el nombre de la canción:</label>
+				<input
+					type="text"
+					class="form-control"
+					placeholder="Cancion"
+					id="cancion"
+					name="nombre"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="autor">Ingrese el nombre del autor:</label>
+				<input
+					type="text"
+					class="form-control"
+					placeholder="Autor"
+					id="autor"
+					name="autor"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="cantidad">Cantidad de canciones:</label>
+				<input
+					type="text"
+					class="form-control"
+					placeholder="Cantidad"
+					id="cantidad"
+					name="cantidad"
+				/>
+			</div>
+			<div style="text-align: center">
+				<div class="form-check form-check-inline">
+					<input
+						checked
+						class="form-check-input"
+						type="checkbox"
+						id="inlineCheckbox1"
+						value="popularity"
+						name="popularity"
+						disabled
+					/>
+					<label class="form-check-label" for="inlineCheckbox1">Popularity</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input
+						class="form-check-input"
+						type="checkbox"
+						id="inlineCheckbox0"
+						value="acousticness"
+						name="acousticness"
+					/>
+					<label class="form-check-label" for="inlineCheckbox0">Acousticness</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input
+						class="form-check-input"
+						type="checkbox"
+						id="inlineCheckbox2"
+						value="danceability"
+						name="danceability"
+					/>
+					<label class="form-check-label" for="inlineCheckbox2">Danceability</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input
+						class="form-check-input"
+						type="checkbox"
+						id="inlineCheckbox3"
+						value="energy"
+						name="energy"
+					/>
+					<label class="form-check-label" for="inlineCheckbox3">Energy</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input
+						class="form-check-input"
+						type="checkbox"
+						id="inlineCheckbox4"
+						value="tempo"
+						name="tempo"
+					/>
+					<label class="form-check-label" for="inlineCheckbox4">Tempo</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input
+						class="form-check-input"
+						type="checkbox"
+						id="inlineCheckbox5"
+						value="year"
+						name="year"
+					/>
+					<label class="form-check-label" for="inlineCheckbox5">Year</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input
+						class="form-check-input"
+						type="checkbox"
+						id="inlineCheckbox6"
+						value="true"
+						name="by_artist"
+					/>
+					<label class="form-check-label" for="inlineCheckbox6">By Artist</label>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Buscar</button>
+		</form>
 
-    <% if ( mensaje == true) { %>
-      <script type="text/javascript">
-        Swal.fire({
-          title: 'Error',
-          text: 'Canción no encontrada', 
-          imageUrl:'https://raw.githubusercontent.com/ArturoCeron/EADProyecto/main/public/imgs/triste.png',
-          imageWidth: 120,
-          imageHeight: 120,
-          imageAlt: 'Fallo',
-        });
-      </script>
-    <% } else if ( resultados[0] != null ){ %>
-      <br><h3> Canción elegida: <%- nombre %> - <%- autor %> </h3>
-      <div class="container"><br>
-        <div class="row">
-          <div class="col-sm-5">
-            <h3>Autor</h3>
-            <% for (var i = 0; i < resultados.length; i = i + 3) { %>
-              <h5> <%- resultados[i]%></h5><br>
-            <% } %>
-          </div>
-          <div class="col-sm-5">
-            <h3>Nombre</h3>
-            <% for (var i = 1; i < resultados.length; i = i + 3) { %>
-              <h5> <%- resultados[i]%></h5><br>
-            <% } %>
-          </div>
-          <div class="col-sm-2">
-            <h3>Año</h3>        
-            <% for (var i = 2; i < resultados.length; i = i + 3) { %>
-              <h5> <%- resultados[i]%></h5><br>
-            <% } %>
-          </div>
-        </div>
-      </div>
-    <% } %>
-  </body>
+		<% if ( mensaje == true) { %>
+		<script type="text/javascript">
+			Swal.fire({
+				title: 'Error',
+				text: 'Canción no encontrada',
+				imageUrl:
+					'https://raw.githubusercontent.com/ArturoCeron/EADProyecto/main/public/imgs/triste.png',
+				imageWidth: 120,
+				imageHeight: 120,
+				imageAlt: 'Fallo',
+			});
+		</script>
+		<% } else if ( resultados[0] != null ){ %>
+		<br />
+		<h3>Canción elegida: <%- nombre %> - <%- autor %></h3>
+		<div class="container">
+			<br />
+			<div class="row">
+				<div class="col-sm-5">
+					<h3>Autor</h3>
+					<% for (var i = 0; i < resultados.length; i = i + 3) { %>
+					<h5><%- resultados[i]%></h5>
+					<br />
+					<% } %>
+				</div>
+				<div class="col-sm-5">
+					<h3>Nombre</h3>
+					<% for (var i = 1; i < resultados.length; i = i + 3) { %>
+					<h5><%- resultados[i]%></h5>
+					<br />
+					<% } %>
+				</div>
+				<div class="col-sm-2">
+					<h3>Año</h3>
+					<% for (var i = 2; i < resultados.length; i = i + 3) { %>
+					<h5><%- resultados[i]%></h5>
+					<br />
+					<% } %>
+				</div>
+			</div>
+		</div>
+		<% } %>
+	</body>
 </html>

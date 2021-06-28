@@ -5,20 +5,27 @@ import os.path
 import sys, json
 pd.options.mode.chained_assignment = None
 
+lines = sys.stdin.readlines()
+
 ruta = "https://raw.githubusercontent.com/ArturoCeron/EADProyecto/main/public/dataset/canciones.csv"
-atributos = ["acousticness","danceability","energy","popularity", "tempo", "year"]
+
+atributos = sys.argv[4].split(',')
+# atributos = ["acousticness","danceability","energy","popularity", "tempo", "year"]
+
 canciones = pd.read_csv(ruta)
-canciones = canciones.drop_duplicates(subset=['artists','name'],keep='first')
 normal = pd.read_csv(ruta)
+
+if sys.argv[5] == 'true':
+    canciones = canciones[canciones["artists"] == sys.argv[2]]
+
 normal = canciones.drop_duplicates(subset=['artists','name'],keep='first')
+canciones = canciones.drop_duplicates(subset=['artists','name'],keep='first')
 canciones["name"] = canciones["name"].str.lower()
 canciones["artists"] = canciones["artists"].str.lower()
 atributosCanciones = canciones[atributos]
 nombres_y_Artistas = canciones[['name','artists']]
 nombres = nombres_y_Artistas['name']
 artistas = nombres_y_Artistas['artists']
-
-lines = sys.stdin.readlines()
 
 def normalize(column):
     max_value = column.max()
@@ -57,12 +64,26 @@ def recomendadas(cancion):
     
     distancias.sort(key=lambda x:x[0])
     vacio = bool(sys.argv[3])
+
+    # if sys.argv[5] == 'true' and vacio == True:
+    #     # cantidad = len(nombres_y_Artistas.index) - 1
+    #     cantidad = int(sys.argv[3])
+    # else:
+
+    longitud = len(nombres_y_Artistas.index) - 1
+
     if (vacio == False):
         cantidad = 10
+        if (longitud < cantidad):
+            cantidad = longitud
     else:
         cantidad = int(sys.argv[3])
+        if (longitud < cantidad):
+            cantidad = longitud
     for x in range(cantidad):
         listaCanciones.append(ENCODER[nombres_y_Artistas.values[distancias[x+1][1]][0],nombres_y_Artistas.values[distancias[x+1][1]][1]]) #(songName, songArtist)
+
+        #Realizar un array grande y realizar el select
 
     return listaCanciones
 
